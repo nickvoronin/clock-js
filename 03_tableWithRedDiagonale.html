@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>03</title>
+</head>
+<body>
+
+  <table>
+    <tr>
+      <td>1:1</td>
+      <td>2:1</td>
+      <td>3:1</td>
+      <td>4:1</td>
+      <td>5:1</td>
+    </tr>
+    <tr>
+      <td>1:2</td>
+      <td>2:2</td>
+      <td>3:2</td>
+      <td>4:2</td>
+      <td>5:2</td>
+    </tr>
+    <tr>
+      <td>1:3</td>
+      <td>2:3</td>
+      <td>3:3</td>
+      <td>4:3</td>
+      <td>5:3</td>
+    </tr>
+    <tr>
+      <td>1:4</td>
+      <td>2:4</td>
+      <td>3:4</td>
+      <td>4:4</td>
+      <td>5:4</td>
+    </tr>
+    <tr>
+      <td>1:5</td>
+      <td>2:5</td>
+      <td>3:5</td>
+      <td>4:5</td>
+      <td>5:5</td>
+    </tr>
+  </table>
+
+  <script>
+    /**
+     * Следующий скрипт подкрасит красным ячейки таблицы по главной диагонали
+     */
+    let table = document.querySelector("tbody");
+
+    /**
+     * Проитерируем строки таблицы
+     * Коллекция строк хранится в свойстве table.rows
+     */
+    for (let rowNumber = 0; rowNumber < table.rows.length; rowNumber++) {
+      let row = table.rows[rowNumber];
+        /**
+         * Проитерируем ячейки в каждой строке
+         * Коллекция ячеек хранится в row.cells
+         */
+      for (let cellNumber = 0; cellNumber < row.cells.length; cellNumber++) {
+        let cell = row.cells[cellNumber];
+        /**
+         * Если порядковые номера строки и ячейки совпадают - они находятся на главной диагонали
+         * Следовательно меняем цвет фона ячейки на красный
+         */
+        if (rowNumber === cellNumber) {
+          cell.style.backgroundColor = "red";
+        }
+
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+
+<meta charset="UTF-8">
+<div>Это</div>
+<div>Все</div>
+<div>Элементы DOM</div>
+
+<script>
+  "use strict";
+  /* ваш код полифилла */
+  (function () {
+
+    if (Element.prototype.remove === undefined) {
+      Element.prototype.remove = function () {
+        if (this.parentElement) {
+          this.parentElement.removeChild(this);
+        }
+      }
+    }
+  })();
+  let elem = document.body.children[0];
+
+  elem.remove(); // <-- вызов должен удалить элемент
+</script>

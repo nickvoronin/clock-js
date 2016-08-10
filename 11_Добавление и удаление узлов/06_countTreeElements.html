@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <ul>
+    <li>Животные
+      <ul>
+        <li>Млекопитающие
+          <ul>
+            <li>Коровы</li>
+            <li>Ослы</li>
+            <li>Собаки</li>
+            <li>Тигры</li>
+          </ul>
+        </li>
+        <li>Другие
+          <ul>
+            <li>Змеи</li>
+            <li>Птицы</li>
+            <li>Ящерицы</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Рыбы
+      <ul>
+        <li>Аквариумные
+          <ul>
+            <li>Гуппи</li>
+            <li>Скалярии</li>
+          </ul>
+
+        </li>
+        <li>Морские
+          <ul>
+            <li>Морская форель</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <script>
+
+  function countInnerListItems(node) {
+  	// возвращает количество вложенных элементов li в полученной ноде
+  	return node.querySelectorAll("li").length ;
+  }
+
+  function appendAmount(node) {
+  	// для всех вложенных элментов в полученную ноду
+  	for (let innerNode of node.childNodes) {
+		// рекурсивно вызовем для нее функцию
+		appendAmount(innerNode);
+		// если у ноды есть потомки и она не является списком
+  		if (innerNode.hasChildNodes() && innerNode.tagName !== "UL") {
+  			const amount = countInnerListItems(innerNode);
+			// допишем в ноду количество вложенных элементов, если они есть
+			if (amount !== 0) {
+				innerNode.firstChild.nodeValue += amount ? `[${amount}]` : "";
+			}
+  		}
+  	}
+  }
+
+  const container = document.getElementsByTagName("ul")[0];
+  // const tree = createTree(data);
+  appendAmount(container);
+  </script>
+
+</body>
+
+</html>

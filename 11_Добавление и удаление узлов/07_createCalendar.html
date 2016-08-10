@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    td,
+    th {
+      border: 1px solid black;
+      padding: 3px;
+      text-align: center;
+    }
+
+    th {
+      font-weight: bold;
+      background-color: #E6E6E6;
+    }
+  </style>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+
+  <div id="calendar"></div>
+
+  <script>
+    function createCalendar(id, year, month) {
+      const DAYS_IN_WEEK = 7,
+        HEADERS = ["Пн","Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
+
+      let elem = document.getElementById(id),
+        firstDay = (new Date(year, month - 1).getDay()),
+        daysInMonth = (new Date(year, month, 0)).getDate(),
+        weeksInMonth = Math.ceil((firstDay + daysInMonth) / DAYS_IN_WEEK),
+        table = document.createElement("table");
+
+
+      // отсюда всё нужно рефакторить (а скорее всего и до сюда тоже)
+      // делаем ряд с заголовками
+      let headersRow = document.createElement("tr");
+
+      for (let i = 0; i < DAYS_IN_WEEK; i++) {
+        let cell = document.createElement("th");
+        cell.innerHTML = HEADERS[i];
+        headersRow.appendChild(cell);
+      }
+      table.appendChild(headersRow);
+
+      // добавляем оставшиеся ряды с числами месяца
+      let counter = 1;
+      for (let i = 0; i < weeksInMonth; i++) {
+        let row = document.createElement("tr");
+
+
+        for (let j = 0; j < DAYS_IN_WEEK; j++) {
+          counter += 1;
+          let cell = document.createElement("td");
+          if (counter > firstDay && counter <= daysInMonth + firstDay ) {
+            cell.innerHTML = counter - firstDay;
+          }
+          row.appendChild(cell);
+        }
+
+
+        table.appendChild(row);
+      }
+
+      elem.appendChild(table);
+    }
+
+    function buildCalendarTable(headers, firstDay, daysInMonth) {
+      const DAYS_IN_WEEK = 7;
+        HEADERS = ["Пн","Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
+      let table = document.createElement("table");
+
+      // append row with headers
+      // append rows with dates
+    }
+
+    function buildRow(n, cellType) {
+      let row = document.createElement("td");
+      for (let i = 0; i < n; i++) {
+        let cell = document.createElement("cellType");
+        cell.innerHTML = i;
+        row.appendChild(cell);
+      }
+      return row;
+    };
+
+    function fillInCalendar(table) {
+
+    }
+    debugger;
+    createCalendar('calendar', 2016, 8)
+  </script>
+</body>
+
+</html>

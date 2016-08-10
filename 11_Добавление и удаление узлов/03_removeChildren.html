@@ -1,0 +1,27 @@
+<meta charset="UTF-8">
+
+
+<table id="table">
+  <tr>
+    <td>Это</td>
+    <td>Все</td>
+    <td>Элементы DOM</td>
+  </tr>
+</table>
+
+<ol id="ol">
+  <li>Вася</li>
+  <li>Петя</li>
+  <li>Маша</li>
+  <li>Даша</li>
+</ol>
+
+<script>
+  "use strict"
+  function removeChildren(elem) {
+	elem.innerHTML = "";
+  }
+
+  removeChildren(table); // очищает таблицу
+  removeChildren(ol); // очищает сп	исок
+</script>

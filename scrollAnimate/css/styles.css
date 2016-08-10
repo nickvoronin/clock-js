@@ -1,0 +1,9 @@
+.some_text {
+  width: 800px;
+  margin-left: 200px;
+  margin-top: 150px;
+}
+
+.some_text h1 {
+  text-align: center;
+}
